@@ -16,9 +16,10 @@ function Chat({ location }) {
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState([]);
 
 
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'https://chat-app-nodereact.herokuapp.com/';
 
     // useeffect for joining and disconnecting
     useEffect(() => {
@@ -43,7 +44,11 @@ function Chat({ location }) {
         socket.on('message', (message) => {
             setMessages([...messages, message]);
         });
-    }, [messages]);
+
+        socket.on("roomData", ({ users }) => {
+            setUsers(users);
+        });
+    }, [messages, users]);
 
     const sendMessage = event => {
         event.preventDefault();
@@ -53,7 +58,6 @@ function Chat({ location }) {
         }
     }
 
-    console.log(message, messages);
 
     return (
         <div className="outerContainer">
