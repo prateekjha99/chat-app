@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background: #335d2d;
+  /* background-image: linear-gradient(to top right,#23689b, #23689b, #23689b); */
   border-radius: 4px 4px 0 0;
   height: 60px;
   width: 100%;

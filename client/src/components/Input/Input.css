@@ -4,8 +4,8 @@
 }
 
 .input {
-  border: none;
-  border-radius: 0;
+  border: 1px blue;
+  border-radius: 40;
   padding: 5%;
   width: 80%;
   font-size: 1.2em;
@@ -23,5 +23,15 @@ input:focus, textarea:focus, select:focus{
   padding: 20px;
   display: inline-block;
   border: none;
-  width: 20%;
+  width: 10%;
+}
+
+.icons{
+  width : 10%;
+  font-size: 3rem;
+  margin: auto;
+  /* color: white; */
+  /* border-radius: 50%; */
+  /* padding : 20px; */
+  /* background-color: black; */
 }

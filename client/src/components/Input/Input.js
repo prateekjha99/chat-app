@@ -1,29 +1,42 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import Picker, {SKIN_TONE_DARK} from 'emoji-picker-react';
 import {GrEmoji} from 'react-icons/gr';
-import {FaRegKeyboard, FaEnvelope} from 'react-icons/fa';
+import {FaRegKeyboard} from 'react-icons/fa';
+import {BiSend} from 'react-icons/bi';
 
 import './Input.css';
 
 const Input = ({ setMessage, sendMessage, message }) => {
   const [showEmoji, setShowEmoji] = useState(false);
+  const [cursorPos, setCursorPos] = useState(0);
   const inputRef = React.createRef();
 
-  const onEmojiClick = (event, emojiObject) => {
-      document.querySelector('input').value += emojiObject.emoji;
-      console.log(emojiObject)
-      inputRef.current.autofocus = true;
+  const onEmojiClick = (event, {emoji}) => {
+        inputRef.current.focus();
+        const message = inputRef.current.value;
+        const start = message.substring(0,inputRef.current.selectionStart);
+        const end = message.substring(inputRef.current.selectionStart);
+        // inputRef.current.value = start + emoji + end;
+        setMessage(start+emoji+end);
+        setCursorPos(start.length+emoji.length);
     };
+
+  useEffect(()=>{
+    inputRef.current.selectionEnd = cursorPos;
+  },[cursorPos]);
   
   var visible = true;
   const toggleEmoji = (event) =>{
       event.preventDefault();
       setShowEmoji(!showEmoji);
-
   }
-
   return (
+    <div>
+      {
+        showEmoji==true ? <Picker  onEmojiClick={onEmojiClick} skinTone={SKIN_TONE_DARK} pickerStyle={{ width: '100%'}}/> : null
+      }
     <form className="form">
+      
       <input
         ref={inputRef}
         className="input"
@@ -33,51 +46,17 @@ const Input = ({ setMessage, sendMessage, message }) => {
         onChange={({ target: { value } }) => setMessage(value)}
         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
       />
-      <button className="sendButton" onClick={e => sendMessage(e)}>Send</button>
       {
         showEmoji==true ? 
-        <span>  
-          <FaRegKeyboard onClick={toggleEmoji} title="board"/>
-          <Picker onEmojiClick={onEmojiClick} skinTone={SKIN_TONE_DARK} style={{position: 'relative',zIndex:2}}/>
-        </span> 
+          <FaRegKeyboard className="icons" onClick={toggleEmoji} title="board"/>
         : 
-        <GrEmoji onClick={toggleEmoji}/>
+          <GrEmoji className="icons" onClick={toggleEmoji}/>
        }
+      {/* <button className="sendButton" onClick={event => sendMessage(event)}>Send</button> */}
+      <BiSend  className="icons" onClick={event=>sendMessage(event)}></BiSend>
     </form>
+    </div>
   )
 };
-// const App = () => {
-//   const [showEmoji, setShowEmoji] = useState(false);
-//   const inputRef = React.createRef();
-
-//   const onEmojiClick = (event, emojiObject) => {
-//       document.querySelector('input').value += emojiObject.emoji;
-//       console.log(emojiObject)
-//       inputRef.current.autofocus = true;
-//     };
-  
-//   var visible = true;
-//   const toggleEmoji = (event) =>{
-//       event.preventDefault();
-//       setShowEmoji(!showEmoji);
-
-//   }
-//   return (
-//       <div>
-//           <input placeholder="type.." ref={inputRef}></input>
-//           {
-//               showEmoji==true ? 
-//               <span>
-//                   <FaRegKeyboard onClick={toggleEmoji} title="board"/>
-//                   <Picker onEmojiClick={onEmojiClick} skinTone={SKIN_TONE_DARK} style={{zIndex: "2"}}/>
-//               </span> 
-//               : 
-//               <GrEmoji onClick={toggleEmoji}/>
-//           }
-//           <h1>Hello</h1>
-//       </div>
-//   )
-// };
-
 
 export default Input;
