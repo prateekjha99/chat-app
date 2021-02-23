@@ -30,6 +30,7 @@ input:focus, textarea:focus, select:focus{
   width : 10%;
   font-size: 3rem;
   margin: auto;
+  cursor: pointer;
   /* color: white; */
   /* border-radius: 50%; */
   /* padding : 20px; */
