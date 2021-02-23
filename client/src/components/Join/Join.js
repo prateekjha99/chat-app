@@ -12,7 +12,7 @@ function Join() {
             <div className="joinInnerContainer">
                 <h1 className="heading">
                     <strong style={{textShadow : "10px -10px 20px blue"}}>Connect me</strong>
-                    <div><input placeholder="Name" autofocus className="joinInput" type="text" onChange={(event) => setName(event.target.value)} /></div>
+                    <div><input placeholder="Name" autoFocus className="joinInput" type="text" onChange={(event) => setName(event.target.value)} /></div>
                     <div><input placeholder="Room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} /></div>
                     <Link onClick={event => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
                         <button className="button mt-20" type="submit">Join</button>
