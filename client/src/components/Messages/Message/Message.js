@@ -1,37 +1,44 @@
 import React from 'react';
-
 import './Message.css';
-
 import ReactEmoji from 'react-emoji';
+
+const colors = ["#0061a8","#fb3640","#1f441e","#f48b29","#ff005c"];
 
 const Message = ({ message: { text, user }, name }) => {
   let isSentByCurrentUser = false;
 
-
-  const trimmedName = name.trim().toLowerCase();
-
-  if (user === trimmedName) {
+  if (user.name === name) {
     isSentByCurrentUser = true;
   }
 
+  let isJoinOrDisconnet = user==='';
+
   return (
-    isSentByCurrentUser
+    isJoinOrDisconnet
       ? (
-        <div className="messageContainer justifyEnd">
-          {/* <p className="sentText pr-10">{trimmedName}</p> */}
+        <div className="messageContainer justifyMiddle">
           <div className="messageBox backgroundYellow">
             <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
           </div>
         </div>
       )
-      : (
-        <div className="messageContainer justifyStart">
-          <div className="messageBox backgroundLightGreen">
-            <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+      :
+      isSentByCurrentUser
+        ? (
+          <div className="messageContainer justifyEnd">
+            <div className="messageBox backgroundLightPurple">
+              <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+            </div>
           </div>
-          <p className="sentText pl-10 ">{user}</p>
-        </div>
-      )
+        )
+        : (
+          <div className="messageContainer justifyStart">
+            <div className="messageBox backgroundLightGreen">
+              <p className="sentText pl-10 " style={{color:colors[user.colorIdx]}}>{user.name}</p>
+              <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+            </div>
+          </div>
+        )
   );
 }
 

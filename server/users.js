@@ -1,16 +1,19 @@
 const users = [];
 
-const addUser = ({ id, name, room }) => {
-    name = name.trim().toLowerCase();
-    room = room.trim().toLowerCase();
+var colorIdx = 0;
 
-    const exists = users.find((user) => user.name === name && user.room === room);
+const addUser = ({ id, name, room }) => {
+    const shortName = name.trim().toLowerCase();
+    const shortRoom = room.trim().toLowerCase();
+
+    const exists = users.find((user) => user.name.trim().toLowerCase() === shortName && user.room.trim().toLowerCase() === shortRoom);
 
     if (exists) {
         return { error: 'Username exists !!' }
     }
 
-    const user = { id, name, room };
+    const user = { id, name, room , colorIdx};
+    colorIdx = (colorIdx + 1)%5;
 
     users.push(user);
 

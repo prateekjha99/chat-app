@@ -25,7 +25,6 @@ const Input = ({ setMessage, sendMessage, message }) => {
     inputRef.current.selectionEnd = cursorPos;
   },[cursorPos]);
   
-  var visible = true;
   const toggleEmoji = (event) =>{
       event.preventDefault();
       setShowEmoji(!showEmoji);
@@ -33,7 +32,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
   return (
     <div>
       {
-        showEmoji==true ? <Picker  onEmojiClick={onEmojiClick} skinTone={SKIN_TONE_DARK} pickerStyle={{ width: '100%'}}/> : null
+        showEmoji===true ? <Picker  onEmojiClick={onEmojiClick} skinTone={SKIN_TONE_DARK} pickerStyle={{ width: '100%'}}/> : null
       }
     <form className="form">
       
@@ -47,7 +46,7 @@ const Input = ({ setMessage, sendMessage, message }) => {
         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
       />
       {
-        showEmoji==true ? 
+        showEmoji===true ? 
           <FaRegKeyboard className="icons" onClick={toggleEmoji} title="board"/>
         : 
           <GrEmoji className="icons" onClick={toggleEmoji}/>

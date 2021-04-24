@@ -1,6 +1,5 @@
 import React from 'react';
-
-import closeIcon from '../../icons/closeIcon.png';
+import {FaRegTimesCircle} from 'react-icons/fa';
 
 import './InfoBar.css';
 
@@ -11,7 +10,7 @@ function InfoBar({ room }) {
         <h3>Room : {room}</h3>
       </div>
       <div className="rightInnerContainer">
-        <a href="/"><img src={closeIcon} alt="close icon" /></a>
+        <a href='/'><FaRegTimesCircle color="white" size="2rem"/></a>
       </div>
     </div>
   );
