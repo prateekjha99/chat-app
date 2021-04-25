@@ -1,12 +1,13 @@
 import React,{useEffect, useState} from 'react';
 import Picker, {SKIN_TONE_DARK} from 'emoji-picker-react';
+import Dropzone from 'react-dropzone';
 import {GrEmoji} from 'react-icons/gr';
 import {FaRegKeyboard} from 'react-icons/fa';
 import {BiSend} from 'react-icons/bi';
-
+import {BiImage} from 'react-icons/bi';
 import './Input.css';
 
-const Input = ({ setMessage, sendMessage, message }) => {
+const Input = ({ setMessage, sendMessage, message, onDrop }) => {
   const [showEmoji, setShowEmoji] = useState(false);
   const [cursorPos, setCursorPos] = useState(0);
   const inputRef = React.createRef();
@@ -29,6 +30,8 @@ const Input = ({ setMessage, sendMessage, message }) => {
       event.preventDefault();
       setShowEmoji(!showEmoji);
   }
+
+  
   return (
     <div>
       {
@@ -36,6 +39,17 @@ const Input = ({ setMessage, sendMessage, message }) => {
       }
     <form className="form">
       
+      {/* image upload */}
+      <Dropzone onDrop={onDrop}>
+        {({getRootProps, getInputProps}) => (
+          <div {...getRootProps()} style={{display: "inline-block",width: "8%", margin : "auto"}}>
+            <input {...getInputProps()} />
+            <BiImage style={{fontSize: "3rem", cursor: "pointer"}}></BiImage>
+          </div>
+        )}
+      </Dropzone>
+
+
       <input
         ref={inputRef}
         className="input"
@@ -51,7 +65,6 @@ const Input = ({ setMessage, sendMessage, message }) => {
         : 
           <GrEmoji className="icons" onClick={toggleEmoji}/>
        }
-      {/* <button className="sendButton" onClick={event => sendMessage(event)}>Send</button> */}
       <BiSend  className="icons" onClick={event=>sendMessage(event)}></BiSend>
     </form>
     </div>

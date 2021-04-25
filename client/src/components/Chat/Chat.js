@@ -36,7 +36,7 @@ function Chat({ location }) {
 
         //during unmounting
         return () => {
-            socket.emit('disconnect');
+            socket.emit('close');
             socket.off();
         }
     }, [ENDPOINT, location.search]);
@@ -53,19 +53,34 @@ function Chat({ location }) {
 
     const sendMessage = event => {
         event.preventDefault();
-        
+        console.log("::"+message);
         if (message) {
-            socket.emit('sendMessage', message, () => setMessage(''));
+            socket.emit('sendMessage', message, ()=> setMessage(''));
         }
     }
 
+    
+    const onDrop = (files) => {
+        const data = files[0];
+
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var msg ={};
+            // msg.username = username;
+            msg.file = event.target.result;
+            msg.fileName = data.name;
+            socket.emit('sendMessage', msg, ()=> setMessage(''));
+        };
+        reader.readAsDataURL(data);
+        console.log(reader);
+    }
 
     return (
         <div className="outerContainer">
             <div className="container">
                 <InfoBar room={room} />
                 <Messages messages={messages} name={name} />
-                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} onDrop={onDrop} />
             </div>
         </div>
     );
