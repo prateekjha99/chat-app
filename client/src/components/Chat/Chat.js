@@ -19,8 +19,8 @@ function Chat({ location }) {
     const [users, setUsers] = useState([]);
 
 
-    // const ENDPOINT = 'https://chat-app-nodereact.herokuapp.com/';
-    const ENDPOINT = 'http://localhost:5000'
+    const ENDPOINT = 'https://chat-app-nodereact.herokuapp.com/';
+    // const ENDPOINT = 'http://localhost:5000'
 
     // useeffect for joining and disconnecting
     useEffect(() => {
