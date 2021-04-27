@@ -44,7 +44,7 @@ const Input = ({ setMessage, sendMessage, message, onDrop }) => {
         {({getRootProps, getInputProps}) => (
           <div {...getRootProps()} style={{display: "inline-block",width: "8%", margin : "auto"}}>
             <input {...getInputProps()} />
-            <BiImage style={{fontSize: "3rem", cursor: "pointer"}}></BiImage>
+            <BiImage style={{fontSize: "3rem", width: "100%", cursor: "pointer"}}></BiImage>
           </div>
         )}
       </Dropzone>

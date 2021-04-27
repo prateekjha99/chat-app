@@ -44,7 +44,7 @@ const Message = ({ message: { msg, user }, name }) => {
                 ?
                   <p className="messageText colorDark" style={{ marginBottom: "0.3em", marginTop:"0.2em"}}>{ReactEmoji.emojify(msg)}</p>
                 :
-                  <img src={msg.file} alt={msg.FileName} style={{display:"inline-block", margnBottom: "5px", maxWidth: "100%", margin: "5px auto"}} />
+                  <img src={msg.file} alt={msg.fileName} style={{display:"inline-block", margnBottom: "5px", maxWidth: "100%", margin: "5px auto"}} />
               }
             </div>
           </div>
