@@ -1,7 +1,7 @@
 # chat-app
 
 
-# [Live app link](https://flamboyant-euler-671026.netlify.app/)
+# [Live app link](https://connect-me-chat-app.netlify.app/)
 
 A chat application where 2 or more users can chat in a given room
 <u>Supported features implemented till now</u>
@@ -14,11 +14,11 @@ A chat application where 2 or more users can chat in a given room
 <br>
 
 Setup :
- run 
+ To run app
  ```
  1. npm install
  2. npm start 
  ```
- for both client and server
+ for both client and server in different terminal
  
  Built using ReactJS for frontend and nodeJS for backend and socket io library for handling websockets
