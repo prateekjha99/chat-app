@@ -1,7 +1,7 @@
 # chat-app
 
 
-# [Live app link](https://connect-me-chat-app.netlify.app/)
+# [Live app link - https://connect-me-chat-app.netlify.app/](https://connect-me-chat-app.netlify.app/)
 
 A chat application where 2 or more users can chat in a given room
 <u>Supported features implemented till now</u>
@@ -9,12 +9,16 @@ A chat application where 2 or more users can chat in a given room
 2. emoji dashboard
 3. images can be sent
 
+<img src='./images/working chat app.gif' height=400 alt='working chat app gif' />
 <br>
-**Join**
+<hr>
+# Join
 <img src="./images/join.PNG" height="400"/>
-**Chat** ( images can also be sent )
+<hr>
+# Chat ( images can also be sent )
 <img src="./images/chat.PNG" height="400" />
-**Emoji dashboard**
+<hr>
+# Emoji dashboard
 <img src="./images/emoji dashboard.PNG" height="400" />
 <br>
 
