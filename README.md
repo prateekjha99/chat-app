@@ -25,9 +25,10 @@ A chat application where 2 or more users can chat in a given room
 Setup :
  To run app
  ```
- 1. npm install
- 2. npm start 
+ 1. Open two terminals - one for client, one for server
+ 2. In both terminals, run
+     (i) npm install
+    (ii) npm start 
  ```
- for both client and server in different terminal
  
  Built using ReactJS for frontend and nodeJS for backend and socket io library for handling websockets
